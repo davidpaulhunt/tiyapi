@@ -1,17 +1,28 @@
 FirstView = Support.CompositeView.extend({
   events: {
-    'click .renderchild' :   'renderChildExample'
+    'click .newModel' :   'saveNewModel'
   },
   initialize: function(){
     console.log("firstView init")
   },
   render: function(){
-    this.$el.html("<h1>FirstView</h1><br/><button class='btn-lg btn-primary renderchild'>render child</button>")
-    this.$el.append("<div class='render-child-here'></div>")
+    this.$el.html(
+      "<h2>Create a new Model</h1>\
+      <input type='text' class='model-name' placeholder='name'>\
+      <br/>\
+      <input type='text' class='model-desc' placeholder='description'>\
+      <br/>\
+      <button class='btn-lg btn-primary newModel'>Save New Model</button>"
+      )
     return this
   },
-  renderChildExample: function(){
-    this.renderChildInto(new ChildView(), ".render-child-here")
+  saveNewModel: function(){
+    new CoolModel({name: $(".model-name").val(), desc: $(".model-desc").val()}).save({
+      success: function(response){
+        console.log('model has done been fetched. response: '+response)
+        this.renderChildInto(new ChildView(), ".render-child-here")
+      }
+    })
   }
 
 })

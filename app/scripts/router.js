@@ -3,7 +3,6 @@ CoolRouter = Support.SwappingRouter.extend({
     ''                : 'index',
     'firstview'   : 'firstView',
     'secondview'   : 'secondView',
-    'thirdview'    : 'thirdView',
   },
   initialize: function(){
     this.el = $(".stage");
@@ -20,10 +19,6 @@ CoolRouter = Support.SwappingRouter.extend({
     this.swap(view)
   },
 
-  thirdView: function(){
-    var view = new ThirdView()
-    this.swap(view)
-  }
 })
 
 $(function(){
