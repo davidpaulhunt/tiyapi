@@ -27,6 +27,6 @@ CoolRouter = Support.SwappingRouter.extend({
 })
 
 $(function(){
-  var coolRouter = new CoolRouter()
+  window.CoolRouter = new CoolRouter()
   Backbone.history.start()
 })

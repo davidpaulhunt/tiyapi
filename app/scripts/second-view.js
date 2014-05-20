@@ -1,7 +1,7 @@
 SecondView = Support.CompositeView.extend({
   events: {
     'click .edit-model' :  'editModel', 
-  }
+  },
   initialize: function(options){
     console.log("secondView init")
     this.id = options.id || "well, shit"
@@ -34,6 +34,7 @@ SecondView = Support.CompositeView.extend({
   },
 
   editModel: function(){
+    console.log("navigate meow")
     CoolRouter.navigate('/edit/'+this.id, {trigger: true})
 
   }
