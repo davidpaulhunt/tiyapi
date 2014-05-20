@@ -25,11 +25,11 @@ CoolRouter = Support.SwappingRouter.extend({
     this.swap(view)
   },
 
-  editCoolModel: function(id){
+  deleteCoolModel: function(id){
     var that = this
     // super ugly way of doing this, but whatever
     $.ajax({
-      url: 'http://localhost:3000/api/cool-model/'+id,
+      url: 'http://localhost:3000/api/schools/'+id,
       type: 'DELETE',
       success: function(response){
         console.log("model deleted! response:"+response)
