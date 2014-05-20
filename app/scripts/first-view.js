@@ -7,7 +7,7 @@ FirstView = Support.CompositeView.extend({
   },
   render: function(){
     this.$el.html(
-      "<h2>Create a new Model</h1>\
+      "<h2>Create a new Model</h2>\
       <input type='text' class='model-name' placeholder='name'>\
       <br/>\
       <input type='text' class='model-desc' placeholder='description'>\
@@ -20,7 +20,7 @@ FirstView = Support.CompositeView.extend({
     new CoolModel({name: $(".model-name").val(), desc: $(".model-desc").val()}).save({
       success: function(response){
         console.log('model has done been fetched. response: '+response)
-        this.renderChildInto(new ChildView(), ".render-child-here")
+        CoolRouter.navigate('/show/'+response.id, {trigger: true})
       }
     })
   }
