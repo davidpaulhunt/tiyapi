@@ -5,6 +5,7 @@ SecondView = Support.CompositeView.extend({
   initialize: function(options){
     console.log("secondView init")
     this.id = options.id || "well, shit"
+    this.fetchModel()
   },
   render: function(){
     this.$el.html("<h1>showing the model with id: "+this.id+"</h1>")
