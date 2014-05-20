@@ -11,7 +11,7 @@ ThirdView = Support.CompositeView.extend({
     return this
   },
   renderEdit: function(){
-    this.$el.html("
+    this.$el.html("\
       <input class='edit-modal-name' value="+this.coolModel.name +">\
       <input class='edit-modal-desc' value="+this.coolModel.desc +">\
       <button class='update-model'>Update Model</button>\
