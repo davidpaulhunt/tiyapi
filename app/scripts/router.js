@@ -34,7 +34,9 @@ CoolRouter = Support.SwappingRouter.extend({
       success: function(response){
         console.log("model deleted! response:"+response)
         that.firstView()
-
+      },
+      error: function(err,res){
+        console.log("something went horribly wrong! err:" + err)
       }
     })
   },
