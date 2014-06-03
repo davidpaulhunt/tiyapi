@@ -2,9 +2,9 @@ CoolRouter = Support.SwappingRouter.extend({
   routes: {
     ''                : 'index',
     'firstview'   : 'firstView',
-    'show/:id'   : 'showCoolModel',
-    'edit/:id'   : 'editCoolModel',
-    'delete/:id'   : 'deleteCoolModel',
+    'show/:id'   : 'showIdea',
+    'edit/:id'   : 'editIdea',
+    'delete/:id'   : 'deleteIdea',
   },
   initialize: function(){
     this.el = $(".stage");
@@ -16,20 +16,20 @@ CoolRouter = Support.SwappingRouter.extend({
     this.swap(view)
   },
 
-  showCoolModel: function(id){
+  showIdea: function(id){
     var view = new SecondView(id)
     this.swap(view)
   },
-  editCoolModel: function(id){
+  editIdea: function(id){
     var view = new ThirdView(id)
     this.swap(view)
   },
 
-  editCoolModel: function(id){
+  deleteIdea: function(id){
     var that = this
     // super ugly way of doing this, but whatever
     $.ajax({
-      url: 'http://localhost:3000/api/cool-model/'+id,
+      url: 'http://localhost:3000/api/ideas/'+id,
       type: 'DELETE',
       success: function(response){
         console.log("model deleted! response:"+response)

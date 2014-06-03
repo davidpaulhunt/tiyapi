@@ -5,7 +5,7 @@ SecondView = Support.CompositeView.extend({
   initialize: function(options){
     console.log("secondView init")
     this.id = options.id || "well, shit"
-    this.fetchModel()
+    this.fetchIdea()
   },
   render: function(){
     this.$el.html("<h1>showing the model with id: "+this.id+"</h1>")
@@ -13,28 +13,28 @@ SecondView = Support.CompositeView.extend({
 
   },
   fetchModel: function(){
-    this.coolModel = new CoolModel()
-    this.coolModel.url = 'http://localhost:3000/api/cool-model/'+this.id
-    this.coolModel.fetch({
+    this.idea = new Idea()
+    this.idea.url = 'http://localhost:3000/api/ideas/'+this.id
+    this.idea.fetch({
       success: function(response){
         console.log("model fetched, response: "+response)
-        this.renderModel()
+        this.renderIdea()
       }
     })
   },
-  renderModel: function(){
+  renderIdea: function(){
     this.$el.append(
       "<ul>\
-        <li>name: "+this.coolModel.name+"\
-        <li>desc: "+this.coolModel.desc+"\
+        <li>name: "+this.idea.name+"\
+        <li>desc: "+this.idea.desc+"\
       </ul>\
-      <button class='edit-model'>Edit Model</button>\
+      <button class='edit-model'>Edit Idea</button>\
       "
 
     )
   },
 
-  editModel: function(){
+  editIdea: function(){
     console.log("navigate meow")
     CoolRouter.navigate('/edit/'+this.id, {trigger: true})
 
