@@ -1,6 +1,6 @@
-CoolModel = Backbone.Model.extend({
+Idea = Backbone.Model.extend({
 
-  url: 'http://localhost:3000/api/cool-model',
+  url: 'http://localhost:3000/api/ideas',
   parse: function(response){
     console.log("model returned, response is: "+ response)
   },

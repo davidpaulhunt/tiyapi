@@ -1,1 +1,1 @@
-console.log('\'Allo \'Allo motherfuckers!');
+console.log('\'Allo \'Allo children!');
