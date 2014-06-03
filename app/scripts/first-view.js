@@ -23,6 +23,12 @@ FirstView = Support.CompositeView.extend({
         console.log("navigate meow")
         CoolRouter.navigate('/show/'+response.id, {trigger: true})
       }
+    }, {
+      headers:{
+        "Access-Control-Allow-Origin" : "*",
+        "Access-Control-Allow-Methods" : "*",
+        "Access-Control-Allow-Headers" : "*"
+      }
     })
   }
 
