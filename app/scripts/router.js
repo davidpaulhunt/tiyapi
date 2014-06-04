@@ -2,9 +2,9 @@ CoolRouter = Support.SwappingRouter.extend({
   routes: {
     ''                : 'index',
     'firstview'   : 'firstView',
-    'show/:id'   : 'showCoolModel',
-    'edit/:id'   : 'editCoolModel',
-    'delete/:id'   : 'deleteCoolModel',
+    'show/:id'   : 'showIdea',
+    'edit/:id'   : 'editIdea',
+    'delete/:id'   : 'deleteIdea',
   },
   initialize: function(){
     this.el = $(".stage");
@@ -16,27 +16,35 @@ CoolRouter = Support.SwappingRouter.extend({
     this.swap(view)
   },
 
-  showCoolModel: function(id){
-    var view = new SecondView(id)
+  showIdea: function(id){
+    console.log("id is:", id)
+    var view = new SecondView({id:id})
     this.swap(view)
   },
-  editCoolModel: function(id){
-    var view = new ThirdView(id)
+  editIdea: function(id){
+    var view = new ThirdView({id:id})
     this.swap(view)
   },
 
-  deleteCoolModel: function(id){
+  deleteIdea: function(id){
     var that = this
     // super ugly way of doing this, but whatever
-    $.ajax({
-      url: 'http://localhost:3000/api/schools/'+id,
-      type: 'DELETE',
-      success: function(response){
-        console.log("model deleted! response:"+response)
-        that.firstView()
+    toBeDestroyed = new Idea()
+    toBeDestroyed.set("id", id)
+    toBeDestroyed.url = 'http://localhost:3000/api/ideas/'+id
+    toBeDestroyed.destroy()
+    // $.ajax({
+    //   url: 'http://localhost:3000/api/ideas/'+id,
+    //   type: 'DELETE',
+    //   success: function(response){
+    //     console.log("model deleted! response:"+response)
+    //     that.firstView()
+    //   },
+    //   error: function(err,res){
+    //     console.log("something went horribly wrong! err:" + err)
+    //   }
+    // })
 
-      }
-    })
   },
 
 })
