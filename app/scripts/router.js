@@ -29,17 +29,21 @@ CoolRouter = Support.SwappingRouter.extend({
   deleteIdea: function(id){
     var that = this
     // super ugly way of doing this, but whatever
-    $.ajax({
-      url: 'http://localhost:3000/api/ideas/'+id,
-      type: 'DELETE',
-      success: function(response){
-        console.log("model deleted! response:"+response)
-        that.firstView()
-      },
-      error: function(err,res){
-        console.log("something went horribly wrong! err:" + err)
-      }
-    })
+    toBeDestroyed = new Idea()
+    toBeDestroyed.set("id", id)
+    toBeDestroyed.url = 'http://localhost:3000/api/ideas/'+id
+    toBeDestroyed.destroy()
+    // $.ajax({
+    //   url: 'http://localhost:3000/api/ideas/'+id,
+    //   type: 'DELETE',
+    //   success: function(response){
+    //     console.log("model deleted! response:"+response)
+    //     that.firstView()
+    //   },
+    //   error: function(err,res){
+    //     console.log("something went horribly wrong! err:" + err)
+    //   }
+    // })
   },
 
 })

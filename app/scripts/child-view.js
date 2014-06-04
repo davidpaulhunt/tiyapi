@@ -32,6 +32,7 @@ ThirdView = Support.CompositeView.extend({
   },
 
   updateModel: function(){
+    var that = this
     var updatedModel = new Idea()
     var newHotness = {
       name: $(".edit-modal-name").val(),
@@ -39,10 +40,10 @@ ThirdView = Support.CompositeView.extend({
     }
     updatedModel.set(newHotness)
     updatedModel.url = 'http://localhost:3000/api/ideas/'+this.id
-    updatedModel.save({
+    updatedModel.save({},{
       success: function(response){
         console.log("holy shit it worked. response: "+response)
-        CoolRouter.navigate('/show/'+response.id, {trigger: true})
+        CoolRouter.navigate('/show/'+that.id, {trigger: true})
       }
     })
   },

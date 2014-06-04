@@ -32,7 +32,7 @@ SecondView = Support.CompositeView.extend({
         <li>desc: "+model.description+"\
       </ul>\
       <button class='edit-model'>Edit Idea</button>\
-      <a href=\"#/delete\""+model.id+">delete</a>\
+      <a href='#/delete/"+model.id+"'>delete</a>\
       "
 
     )
