@@ -47,5 +47,4 @@ CoolRouter = Support.SwappingRouter.extend({
 $(function(){
   window.CoolRouter = new CoolRouter()
   Backbone.history.start()
-  Backbone.emulateHTTP = true
 })
