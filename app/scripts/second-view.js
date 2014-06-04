@@ -1,6 +1,7 @@
 SecondView = Support.CompositeView.extend({
+  model: new Idea(),
   events: {
-    'click .edit-model' :  'editModel', 
+    'click .edit-model' :  'editIdea', 
   },
   initialize: function(options){
     console.log("secondView init")
@@ -12,23 +13,26 @@ SecondView = Support.CompositeView.extend({
     return this
 
   },
-  fetchModel: function(){
-    this.idea = new Idea()
-    this.idea.url = 'http://localhost:3000/api/ideas/'+this.id
-    this.idea.fetch({
-      success: function(response){
-        console.log("model fetched, response: "+response)
-        this.renderIdea()
+  fetchIdea: function(){
+    var that = this
+    // this.idea = new Idea()
+    this.model.url = 'http://localhost:3000/api/ideas/'+this.id
+    this.model.fetch({
+      success: function(response, model){
+        console.log("model fetched, response: "+response, model)
+        that.renderIdea(model)
       }
     })
   },
-  renderIdea: function(){
+  renderIdea: function(model){
+    console.log("idea:", this.model)
     this.$el.append(
       "<ul>\
-        <li>name: "+this.idea.name+"\
-        <li>desc: "+this.idea.desc+"\
+        <li>name: "+model.name+"\
+        <li>desc: "+model.description+"\
       </ul>\
       <button class='edit-model'>Edit Idea</button>\
+      <a href=\"#/delete\""+model.id+">delete</a>\
       "
 
     )

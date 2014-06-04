@@ -17,11 +17,12 @@ CoolRouter = Support.SwappingRouter.extend({
   },
 
   showIdea: function(id){
-    var view = new SecondView(id)
+    console.log("id is:", id)
+    var view = new SecondView({id:id})
     this.swap(view)
   },
   editIdea: function(id){
-    var view = new ThirdView(id)
+    var view = new ThirdView({id:id})
     this.swap(view)
   },
 

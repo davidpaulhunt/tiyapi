@@ -17,14 +17,14 @@ FirstView = Support.CompositeView.extend({
     return this
   },
   saveNewIdea: function(){
-    new Idea({name: $(".model-name").val(), desc: $(".model-desc").val()}).save({},{
+    new Idea({name: $(".model-name").val(), description: $(".model-desc").val()}).save({},{
       success: function(model, response){
         console.log('model has done been fetched. response: '+response)
         console.log("navigate meow")
         CoolRouter.navigate('/show/'+response.id, {trigger: true})
       },
-      error: function(err, data){
-        console.log("error saving model: ", err)
+      error: function(err, xhr, dammit, data){
+        console.log("error saving model: ", err, xhr, dammit, data)
       }
     }, {
       headers:{
