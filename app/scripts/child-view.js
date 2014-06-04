@@ -21,6 +21,7 @@ ThirdView = Support.CompositeView.extend({
     var that = this
     this.idea = new Idea()
     this.idea.url = 'http://localhost:3000/api/ideas/'+this.id
+    this.idea.set("id", this.id)
     this.idea.fetch({
       success: function(response, model) {
         console.log("response in edit is: "+response, model)
